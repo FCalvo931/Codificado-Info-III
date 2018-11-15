@@ -160,40 +160,6 @@ public class Main2 {
         return fFinal;
     }
 
-
-    private static String Codificar(String a) throws Exception {
-        String aCase = a.toLowerCase(); // El palabra a codificar en minuscula.
-        String au[] = new String[] {aCase};
-        String au2[] = new String[] {a};
-        for (int i = 0; i < aCase.length(); i++) {
-            try {
-                Palabra palabra = new Palabra(); // Creo objeto Palabra.
-                palabra.setPalabra(aCase); // Pongo aCase como palabra.
-                palabra = hashTable.get(palabra.getPalabra()); // Busco la palabra en el hash.
-                aCase = palabra.getTraduccion(); // Guardo su Traduccion.
-                int mayusMinus = pMayusMinus(a); // Guardo la "bandera" devuelta por la funcion.
-                if (mayusMinus == 2) { // Si entro aca es que toda la palabra estaba en mayuscuala.
-                    aCase = aCase.toUpperCase(); // Paso su traduccion a mayuscula.
-                } else if (mayusMinus == 1) { // Si entro aca es que la primera letra es mayuscula, las demas no.
-                    char[] ax = aCase.toCharArray();
-                    aCase = "" + ax[0]; // Vacio aCase y le pongo la primera letra
-                    aCase = aCase.toUpperCase(); // Paso la primera letra a mayuscula.
-                    for (int j = 1; j < ax.length; j++) {
-                        aCase = aCase + ax[j]; // Empiezo a armar de nuevo mi palabra traducida con la primera letra en mayuscula.
-                    }
-                }
-                au[i] = aCase;
-            } catch (Exception e) {
-                return au2[0];
-            }
-        }
-        aCase = au[0];
-        for (int i = 1; i < au.length; i++) {
-            aCase = aCase + " " + au[i];
-        }
-        return aCase;
-    }
-
     private static int pMayusMinus(String e) { // Funcion para saber si las palabras son mayusculas o minusculas.
         char[] ax = e.toCharArray();
         String aux = e.toUpperCase();
@@ -206,5 +172,40 @@ public class Main2 {
         } else {
             return 0; // Devuelvo 0 si toda la palabra es minuscula.
         }
+    }
+
+    private static String Codificar(String a) throws Exception {
+        String aux2 = a.toLowerCase(); // El palabra a codificar en minuscula.
+        String au[] = new String[] {aux2};
+        String au2[] = new String[] {a};
+        for (int i = 0; i < au.length; i++) {
+            try {
+                Palabra aux = new Palabra(); // Creo objeto Palabra.
+                aux.setPalabra(au[i]); // Pongo au[i] como palabra.
+                aux = hashTable.get(aux.getPalabra()); // Busco la palabra en el hash.
+                aux2 = aux.getTraduccion(); // Guardo su Traduccion.
+                int mayusMinus = pMayusMinus(au2[i]); // Guardo la "bandera" devuelta por la funcion.
+                if (mayusMinus == 2) { // Si entro aca es que toda la palabra estaba en mayuscuala.
+                    aux2 = aux2.toUpperCase(); // Paso su traduccion a mayuscula.
+                } else if (mayusMinus == 1) { // Si entro aca es que la primera letra es mayuscula, las demas no.
+                    char[] ax = aux2.toCharArray();
+                    String ax1 = "" + ax[0]; // Vacio aCase y le pongo la primera letra.
+                    String ax2 = "";
+                    ax1 = ax1.toUpperCase(); // Paso la primera letra a mayuscula.
+                    for (int l = 1; l < ax.length; l++) {
+                        ax2 = ax2 + "" + ax[l]; // Empiezo a armar de nuevo mi palabra traducida con la primera letra en mayuscula.
+                    }
+                    aux2 = ax1 + ax2; // Vuelvo a armar mi palabra.
+                }
+                au[i] = aux2;
+            } catch (Exception e) {
+                return au2[0];
+            }
+        }
+        aux2 = au[0];
+        for (int i = 1; i < au.length; i++) {
+            aux2 = aux2 + " " + au[i];
+        }
+        return aux2;
     }
 }

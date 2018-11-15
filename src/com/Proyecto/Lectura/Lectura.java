@@ -24,7 +24,8 @@ public class Lectura {
                 linea = leer.readLine(); // Leo linea por linea.
             }
         } catch (Exception e) {
-            System.out.println("Error al cargar");
+            System.out.println("La entrada ingresada no existe o tuvo un error de lectura. Intente nuevamente.");
+            return "false";
         }
         return asd;
     }
