@@ -19,9 +19,10 @@ public class Lectura {
         try {
             BufferedReader leer = new BufferedReader(new FileReader(txt)); // Donde va a leer.
             String linea = leer.readLine(); // Llee linea por linea.
+            asd=linea;
             while (linea != null) { // Lo va leer hasta que la linea sea igual a null.
-                asd = asd + linea; // Creo el String de entrada.
                 linea = leer.readLine(); // Leo linea por linea.
+                asd = asd + "\n" + linea; // Creo el String de entrada.
             }
         } catch (Exception e) {
             System.out.println("La entrada ingresada no existe o tuvo un error de lectura. Intente nuevamente.");
