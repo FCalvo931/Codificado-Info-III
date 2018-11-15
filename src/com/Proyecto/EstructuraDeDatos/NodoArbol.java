@@ -1,50 +1,20 @@
 package com.Proyecto.EstructuraDeDatos;
 
-import com.Proyecto.Object.Palabra;
+public class NodoArbol<AnyType extends Comparable<AnyType>> {
+    private NodoArbol<AnyType> izq;
+    private NodoArbol<AnyType> der;
+    private AnyType dato;
+    private int balanceo;
 
-class NodoArbol<AnyType> {
-    int balanceo;
-    private Palabra dato;
-    private NodoArbol der;
-    private NodoArbol izq;
 
-    public NodoArbol() {
-    }
-
-    public NodoArbol(Palabra dato, NodoArbol der, NodoArbol izq, int balanceo) {
+    public NodoArbol(AnyType dato) {
         this.dato = dato;
-        this.der = der;
-        this.izq = izq;
-        this.balanceo = balanceo;
+        this.izq = null;
+        this.der = null;
+        this.balanceo = 0;
     }
 
-    public NodoArbol(Palabra dato, int balanceo) {
-        this.dato = dato;
-        this.balanceo = balanceo;
-    }
-
-
-    public NodoArbol(Palabra dato) {
-        this.dato = dato;
-    }
-
-    public Palabra getDato() {
-        return dato;
-    }
-
-    public void setDato(Palabra dato) {
-        this.dato = dato;
-    }
-
-    public NodoArbol getDer() {
-        return der;
-    }
-
-    public void setDer(NodoArbol der) {
-        this.der = der;
-    }
-
-    public NodoArbol getIzq() {
+    public NodoArbol<AnyType> getIzq() {
         return izq;
     }
 
@@ -52,12 +22,28 @@ class NodoArbol<AnyType> {
         this.izq = izq;
     }
 
+    public NodoArbol<AnyType> getDer() {
+        return der;
+    }
+
+    public void setDer(NodoArbol der) {
+        this.der = der;
+    }
+
+    public AnyType getDato() {
+        return dato;
+    }
+
+    public void setDato(AnyType dato) {
+        this.dato = dato;
+    }
+
     public int getBalanceo() {
         return balanceo;
     }
 
-    public void setBalanceo(int balanceo) {
-        this.balanceo = balanceo;
+    public void setBalanceo(int al) {
+        this.balanceo = al;
     }
 
 

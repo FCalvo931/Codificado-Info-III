@@ -2,7 +2,7 @@ package com.Proyecto.Object;
 
 import java.util.Objects;
 
-public class Palabra implements Comparable {
+public class Palabra implements Comparable<Palabra> {
     private String palabra;
     private String traduccion;
 
@@ -51,10 +51,17 @@ public class Palabra implements Comparable {
         return true;
     }
 
+
     @Override
-    public int compareTo(Object t) {
-        return palabra.compareTo(t.toString());
+    public String toString() {
+        return "Palabra{" + "palabra=" + palabra + ", traduccion=" + traduccion + '}';
     }
 
+    @Override
+    public int compareTo(Palabra o) {
+        return palabra.compareTo(o.getPalabra());
+    }
 }
+
+
 
